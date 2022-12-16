@@ -7,7 +7,11 @@
 /**/
 /*  font-weight: normal;*/
 /*}*/
-
+.el-button-bg-color{
+  background-color: #a90033 !important;
+  border-color: #ff0000 !important;
+  color: #fff !important;
+}
 .header{
   display: flex;
   justify-content: center;
