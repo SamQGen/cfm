@@ -11,6 +11,9 @@ import "./assets/main.css";
 // import ElementPlus from 'element-plus'
 // import 'element-plus/dist/index.css'
 
+// import "./styles/element/index.scss";
+import 'uno.css'
+
 const app = createApp(App);
 
 app.use(createPinia());

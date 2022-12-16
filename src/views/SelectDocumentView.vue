@@ -6,56 +6,52 @@
     </div>
   </template>
 <!--  body-->
-  <el-row class="document-row">
+  <el-row v-for="type in verficationType" class="document-row">
       <el-card shadow="never" class="box-card">
-        <div slot="header" class="clearfix">
-          <h2>Passport</h2>
-        </div>
+        <template #header>
+          <div  class="clearfix">
+            <h2>{{type.name}}</h2>
+          </div>
+        </template>
         <el-image
-          src="https://qgen-identity.s3.eu-central-1.amazonaws.com/passport.png"
+          :src='type.image'
           fit="cover"
         ></el-image>
-        <el-button plain @click="selectDocument('passport')"><h1>Select</h1></el-button>
+        <el-button plain @click="selectDocument(type.to)"><h1>Select</h1></el-button>
       </el-card>
   </el-row>
-  <el-row class="document-row">
-    <el-card shadow="never" class="box-card">
-      <template #header>
-        <div  class="clearfix">
-          <h2>National ID Card</h2>
-        </div>
-      </template>
-      <el-image
-          src="https://qgen-identity.s3.eu-central-1.amazonaws.com/id-card.png"
-          fit="cover"
-      ></el-image>
-      <el-button type="primary" @click="selectDocument('id-card')">Select</el-button>
-    </el-card>
-  </el-row>
-  <el-row class="document-row">
-    <el-card shadow="never" class="box-card">
-    <div slot="header" class="clearfix">
-      <h2>Driving License</h2>
-    </div>
-    <el-image
-        src="https://qgen-identity.s3.eu-central-1.amazonaws.com/driving-license.png"
-        fit="cover"
-    ></el-image>
-    <el-button type="primary" @click="selectDocument('driving-license')">Select</el-button>
-  </el-card>
-  </el-row>
+
 
 </el-card>
 </template>
 
 <script setup>
+import {useRouter} from "vue-router";
+const router = useRouter()
 let selectDocument = (document) => {
   console.log('select document hit' , document)
-  // router.push({name: 'upload-document', query: {document: document}})
+  router.push({name: document})
 }
-// export default {
-//   name: "SelectDocumentView"
-// }
+let verficationType = [
+  {
+    name:'Passport',
+    image: 'https://qgen-identity.s3.eu-central-1.amazonaws.com/passport.png',
+    type: 'passport',
+    to:'upload-passport'
+  },
+  {
+    name:'ID Card',
+    image: 'https://qgen-identity.s3.eu-central-1.amazonaws.com/id-card.png',
+    type: 'id-card',
+    to:''
+  },
+  {
+    name:'Driving License',
+    image: 'https://qgen-identity.s3.eu-central-1.amazonaws.com/driving-license.png',
+    type: 'driving-license',
+    to:''
+  },
+]
 </script>
 
 <style scoped>
@@ -66,12 +62,8 @@ let selectDocument = (document) => {
   text-align: center;
 
 }
-
 .document-row{
   display: flex;
   justify-content: center;
 }
-
-
-
 </style>
