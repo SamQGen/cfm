@@ -6,42 +6,67 @@
     </div>
   </template>
 
-<upload-file></upload-file>
-
+  <camera-module></camera-module>
+  <div class="el-upload-list__item-file-name">
+    <upload-file></upload-file>
+  </div>
   <el-row>
     <div v-for="item in buttons">
       <el-col col="6" >
-        <el-button type="plain" @click="upload(item)"> {{item.name}}</el-button>
+        <el-button plain @click="upload(item)"> {{item.name}}</el-button>
       </el-col>
     </div>
   </el-row>
+
 </el-card>
 </template>
 
-<script setup>
+<script >
+// have to use options api not composition api for the camera module for some reason!
+import Camera from 'easy-js-camera';
+import CameraModule from "~/components/CameraModule.vue";
 import UploadFile from "~/components/UploadFile.vue";
-defineProps({
-  title: String,
-})
-let buttons = [
-  {
-    name: 'Use Camera',
-    icon: 'camera',
+import {CameraFilled} from "@element-plus/icons-vue/global";
+export default {
+  mounted() {
   },
-  {
-    name: 'Upload Image',
-    icon: 'upload',
+  components: {
+    CameraModule,
+    CameraFilled,
+    UploadFile,
   },
-  {
-    name: 'Continue on smartphone',
-    icon: 'phone',
-  }
-]
+  props:['title'],
+  methods:{
+  },
+  data() {
+    return {
+      camera: null,
+      isTaken:false,
+    buttons : [
+      {
+        name: 'Use Camera',
+        icon: 'camera',
+      },
+      {
+        name: 'Upload Image',
+        icon: 'upload',
+      },
+      {
+        name: 'Continue on smartphone',
+        icon: 'phone',
+      }
+    ]
+    };
+  },
+}
+
 let upload = (icon) => {
   console.log('upload hit', icon)
 }
 </script>
 
 <style scoped>
-
+.el-upload-list__item-file-name{
+  padding: 20px;
+}
 </style>

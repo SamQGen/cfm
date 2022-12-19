@@ -15,10 +15,12 @@
       </div>
     </template>
   </el-upload>
+
 </template>
 
 <script setup lang="ts">
 import { UploadFilled } from '@element-plus/icons-vue'
+
 
 let upload = (icon) => {
   console.log('upload hit', icon)
