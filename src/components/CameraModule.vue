@@ -66,7 +66,7 @@ export default {
 .camera-button{
   z-index: 2;
   position: absolute;
-  bottom: 35%;
-  left: 48%;
+  bottom: 27%;
+  left: 42%;
 }
 </style>

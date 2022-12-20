@@ -6,18 +6,18 @@
     </div>
   </template>
 
+  <div>
   <camera-module></camera-module>
-  <div class="el-upload-list__item-file-name">
-    <upload-file></upload-file>
-  </div>
-  <el-row>
-    <div v-for="item in buttons">
+
+
+  <div v-for="item in buttons" class="center">
+  <el-row class="row-padding">
       <el-col col="6" >
         <el-button plain @click="upload(item)"> {{item.name}}</el-button>
       </el-col>
-    </div>
   </el-row>
-
+  </div>
+  </div>
 </el-card>
 </template>
 
@@ -66,7 +66,8 @@ let upload = (icon) => {
 </script>
 
 <style scoped>
-.el-upload-list__item-file-name{
-  padding: 20px;
+.row-padding{
+  padding: 10px;
 }
+
 </style>
