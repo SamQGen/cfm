@@ -1,12 +1,13 @@
 @import './base.css';
 
-/*#app {*/
-/*  max-width: 1280px;*/
-/*  margin: 0 auto;*/
-/*  padding: 2rem;*/
-/**/
-/*  font-weight: normal;*/
-/*}*/
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  font-weight: normal;
+}
 .el-button-bg-color{
   background-color: #a90033 !important;
   border-color: #ff0000 !important;
@@ -22,8 +23,11 @@
 }
 
 .main-card {
-  height: 100vh;
-  width: 100vw;
+  /*display: flex;*/
+  /*justify-content: center;*/
+  height: 800px;
+  width: 800px;
+
 }
 
 a,
@@ -39,15 +43,37 @@ a,
   }
 }
 
+
+@media only screen and (max-width: 600px) {
+  .main-card {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+  }
+  #app {
+    /*max-width: 1280px;*/
+    margin: 0 ;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    font-weight: normal;
+  }
+}
 @media (min-width: 1024px) {
   body {
     display: flex;
     place-items: center;
   }
+  .main-card {
+    /*height: 90%;*/
+    /*width: ;*/
+  }
 
-  /*#app {*/
-  /*  display: grid;*/
-  /*  grid-template-columns: 1fr 1fr;*/
-  /*  padding: 0 2rem;*/
-  /*}*/
+  #app {
+    /*display: grid;*/
+    /*grid-template-columns: 1fr 1fr;*/
+    /*height: 80%;*/
+    padding: 0 2rem;
+  }
 }

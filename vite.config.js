@@ -30,6 +30,13 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {}
+      },
+    },
+  },
   plugins: [
     vue(),
     Components({

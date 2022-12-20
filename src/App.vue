@@ -5,9 +5,12 @@ import axios from 'axios'
 import {useSettings} from "~/stores/userSettings";
 
 const route = useRoute()
-console.log('inside setup now in app' , route.query)
 const store = useSettings()
-store.getSettings()
+const params = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
+});
+console.log('can we get route here? ', params.name)
+store.getSettings(params.name)
 
 </script>
 

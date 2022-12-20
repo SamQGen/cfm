@@ -1,11 +1,12 @@
 <template>
-  <div class="center">
-    <video ref="videoSection" v-show="!isTaken" autoplay playsinline></video>
-    <canvas class="center" ref="canvasSection" v-show="isTaken"></canvas>
+  <div class="" id="container center">
+    <video class="center half" ref="videoSection" v-show="!isTaken" autoplay playsinline></video>
+    <canvas class="center half" ref="canvasSection" v-show="isTaken"></canvas>
+    <div class="" id="overlay">
+      <CameraButtonIcon @button-clicked="buttonClicked"></CameraButtonIcon>
+    </div>
   </div>
-  <div class="camera-button">
-    <CameraButtonIcon @button-clicked="buttonClicked"></CameraButtonIcon>
-  </div>
+
 </template>
 
 <script>
@@ -69,4 +70,39 @@ export default {
   bottom: 27%;
   left: 42%;
 }
+.half{
+  width: 100%;
+  height: 100%;
+}
+#container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+#container canvas video, #overlay {
+  position: absolute;
+  bottom: 5%;
+  left: 42%;
+}
+canvas {
+  border: 1px solid black;
+}
+@media only screen and (max-width: 600px) {
+  .main-card {
+    /*display: flex;*/
+    /*justify-content: center;*/
+    height: 100vh;
+    width: 100vw;
+  }
+  #app {
+    /*max-width: 1280px;*/
+    margin: 0 ;
+    padding: 0;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    font-weight: normal;
+  }
+}
+
+
 </style>

@@ -31,6 +31,7 @@
   }
 
 
+
 </style>
 
 <script setup >
@@ -52,5 +53,4 @@ let submit = () => {
   router.push({name: 'select-document'})
   console.log('submit hit')
 }
-console.log('inside setup now in about view' , route.query)
 </script>

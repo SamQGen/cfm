@@ -22,47 +22,100 @@
 </template>
 
 <script >
-// have to use options api not composition api for the camera module for some reason!
+import { ref, computed, onMounted } from 'vue';
 import Camera from 'easy-js-camera';
 import CameraModule from "~/components/CameraModule.vue";
 import UploadFile from "~/components/UploadFile.vue";
-import {CameraFilled} from "@element-plus/icons-vue/global";
+import { CameraFilled } from "@element-plus/icons-vue/global";
+import {useRouter} from "vue-router";
+
 export default {
-  mounted() {
-  },
   components: {
     CameraModule,
     CameraFilled,
     UploadFile,
   },
-  props:['title'],
-  methods:{
-  },
-  data() {
-    return {
-      camera: null,
-      isTaken:false,
-    buttons : [
+  props: ['title'],
+  setup(props) {
+    const camera = ref(null);
+    const isTaken = ref(false);
+    const router = useRouter();
+    const buttons = ref([
       {
         name: 'Use Camera',
         icon: 'camera',
+        to: '',
       },
       {
         name: 'Upload Image',
         icon: 'upload',
+        to: 'upload-image',
       },
       {
         name: 'Continue on smartphone',
         icon: 'phone',
+        to: 'continue-on-smartphone',
       }
-    ]
-    };
-  },
+    ]);
+    let upload = (item) => {
+      console.log('upload', item);
+      router.push({name:item.to})
+    }
+
+
+    onMounted(() => {
+      // mounted logic goes here
+    });
+
+    return {
+      camera,
+      isTaken,
+      buttons,
+      upload,
+    }
+  }
 }
 
-let upload = (icon) => {
-  console.log('upload hit', icon)
-}
+// // have to use options api not composition api for the camera module for some reason!
+// import Camera from 'easy-js-camera';
+// import CameraModule from "~/components/CameraModule.vue";
+// import UploadFile from "~/components/UploadFile.vue";
+// import {CameraFilled} from "@element-plus/icons-vue/global";
+// export default {
+//   mounted() {
+//   },
+//   components: {
+//     CameraModule,
+//     CameraFilled,
+//     UploadFile,
+//   },
+//   props:['title'],
+//   methods:{
+//   },
+//   data() {
+//     return {
+//       camera: null,
+//       isTaken:false,
+//     buttons : [
+//       {
+//         name: 'Use Camera',
+//         icon: 'camera',
+//         to:'',
+//       },
+//       {
+//         name: 'Upload Image',
+//         icon: 'upload',
+//         to:'',
+//       },
+//       {
+//         name: 'Continue on smartphone',
+//         icon: 'phone',
+//         to:'',
+//       }
+//     ]
+//     };
+//   },
+// }
 </script>
 
 <style scoped>

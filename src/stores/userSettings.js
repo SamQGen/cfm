@@ -1,11 +1,14 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import router   from "~/router";
 export const useSettings = defineStore('settings', {
     state: () => ({
-        "allowMobile": false,
-        "allowPassport": false,
-        "allowPictureUpload": false,
-        "allowIDCard": false
+        "allowMobile": true,
+        "allowPassport": true,
+        "allowPictureUpload": true,
+        "allowIDCard": true,
+        "allowDrivingLicense": true,
+        user: null,
     }),
     getters: {
     //     allowMobile: (state) => state.allowMobile,
@@ -16,14 +19,23 @@ export const useSettings = defineStore('settings', {
     },
     actions: {
         // any amount of arguments, return a promise or not
-        getSettings() {
-            axios.get('https://run.mocky.io/v3/7a510deb-2e89-4be6-85e0-e3c388d50c1b').then(
+        getRouteSettings() {
+            console.log("getRouteSettings" , router);
+        },
+        getSettings(query) {
+
+            axios.get('https://run.mocky.io/v3/09c742ce-edcf-413e-a91e-213d136b66de').then(
                 (response) => {
-                    console.log('this is the response  ' , response.data)
-                    this.allowMobile = response.data.allowMobile
-                    this.allowPassport = response.data.allowPassport
-                    this.allowPictureUpload = response.data.allowPictureUpload
-                    this.allowIDCard = response.data.allowIDCard
+                    console.log('this is the query ' , query)
+                    if (query){
+                        let x = response.data.users.find((user) => user.name === query);
+                        this.user = query;
+                        this.allowMobile = x.allowMobile
+                        this.allowPassport = x.allowPassport
+                        this.allowPictureUpload = x.allowPictureUpload
+                        this.allowIDCard = x.allowIDCard
+                        this.allowDrivingLicense = x.allowDrivingLicense
+                    }
                 }
             )
         }
