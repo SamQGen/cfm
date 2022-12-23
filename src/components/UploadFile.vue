@@ -2,7 +2,7 @@
   <el-upload
       class="upload-demo"
       drag
-      :action="upload(icon)"
+      action="https://run.mocky.io/v3/50f1610f-f9ba-4ba6-8dec-8591c649300c"
       multiple
   >
     <el-icon class="el-icon--upload"><upload-filled /></el-icon>

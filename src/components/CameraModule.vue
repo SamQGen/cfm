@@ -58,6 +58,9 @@ export default {
         case 'person':
           console.log('this is the type person')
           return 'src/assets/user-mask.png';
+        case 'passport':
+          console.log('this is the type passport')
+          return 'src/assets/passport.png';
         default:
           return false;
       }
@@ -88,6 +91,10 @@ export default {
           // Mostly happens if the user blocks the camera or the media devices are not supported
         });
   },
+  unmounted() {
+    this.camera.stop()
+    console.log('camera unmounted!!!!!')
+  }
 }
 </script>
 
