@@ -3,7 +3,7 @@
     <video class="center half" ref="videoSection" v-show="!isTaken" autoplay playsinline></video>
     <canvas class="center half" ref="canvasSection" v-show="isTaken"></canvas>
     <div class="center" id="overlay">
-      <img class="center half transparent-image" src="../assets/user-mask.png" alt="">
+        <img v-if="applyMask" class="center half transparent-image" :src="applyMask" alt="">
 <!--      <CameraButtonIcon @button-clicked="buttonClicked"></CameraButtonIcon>-->
 
     </div>
@@ -22,6 +22,13 @@ export default {
     Check,
     CameraButtonIcon,
   },
+  props:{
+    type: {
+      type: String,
+      default: false,
+      required: false,
+    },
+  },
   methods: {
     buttonClicked() {
       console.log("button clicked camera module");
@@ -39,6 +46,25 @@ export default {
       });
     }
   },
+  computed:{
+    applyMask(){
+      switch (this.type) {
+        case 'id':
+          console.log('this is the type id')
+          return 'src/assets/IDCard.png';
+        case 'dl':
+          console.log('this is the type dl')
+          return 'src/assets/DriversLicense.png';
+        case 'person':
+          console.log('this is the type person')
+          return 'src/assets/user-mask.png';
+        default:
+          return false;
+      }
+    }
+  },
+
+
   data() {
     return {
       isTaken: false,

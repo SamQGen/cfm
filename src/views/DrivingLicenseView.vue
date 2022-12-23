@@ -1,5 +1,5 @@
 <template>
-  <upload-item title="Upload Driving License"></upload-item>
+  <upload-item type="dl" title="Upload Driving License"></upload-item>
 </template>
 
 <script>
