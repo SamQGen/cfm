@@ -18,8 +18,12 @@
 
 </el-card>
 
+  <slot name="dialog">
+
+  </slot>
   <el-dialog v-model="dialogTableVisible" title="Instructions" align-center :width="computeSizeOfDialog">
-    place your face inside the circle so we can perform a liveness check and match to your photo
+    {{instructions}}
+<!--    place your face inside the circle so we can perform a liveness check and match to your photo-->
   </el-dialog>
 </template>
 
@@ -37,7 +41,7 @@ export default {
     CameraFilled,
     UploadFile,
   },
-  props: ['title','type'],
+  props: ['title','type','instructions'],
   setup(props) {
     const dialogTableVisible= ref(true);
     const camera = ref(null);
