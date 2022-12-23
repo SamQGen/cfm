@@ -7,18 +7,7 @@
   </template>
 <!--  body-->
   <el-row v-for="type in verficationType" class="document-row" v-show="type.show">
-<!--      <el-card shadow="never" class="box-card">-->
-<!--        <template #header>-->
-<!--          <div  class="clearfix">-->
-<!--            <h2>{{type.name}}</h2>-->
-<!--          </div>-->
-<!--        </template>-->
-<!--        <el-image-->
-<!--          :src='type.image'-->
-<!--          fit="cover"-->
-<!--        ></el-image>-->
         <el-button class="box-card" plain @click="selectDocument(type.to)"><h1>{{type.name}}</h1></el-button>
-<!--      </el-card>-->
   </el-row>
 
 </el-card>

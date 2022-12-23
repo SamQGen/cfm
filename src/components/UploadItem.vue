@@ -2,29 +2,36 @@
 <el-card class="main-card">
   <template #header>
     <div class="header">
-      <h1>{{title}}</h1>
+      <el-space direction="vertical">
+        <h1>{{title}}</h1>
+        <h4>{{subtitle}} the picture will be captured automatically</h4>
+      </el-space>
+
     </div>
   </template>
-  <div>
-  <camera-module :type="type"></camera-module>
-  <div v-for="item in buttons" class="center">
-  <el-row class="row-padding">
-      <el-col col="6" >
-        <el-button plain @click="upload(item)"> {{item.name}}</el-button>
-      </el-col>
-  </el-row>
-  </div>
-  </div>
+  <el-container class="center">
+    <el-space direction="vertical">
+      <camera-module :type="type"></camera-module>
+      <div v-for="item in buttons" class="">
+        <el-row class="row-padding">
+          <el-col col="6" >
+            <el-button plain @click="upload(item)"> {{item.name}}</el-button>
+          </el-col>
+        </el-row>
+      </div>
+    </el-space>
+
+  </el-container>
 
 </el-card>
 
   <slot name="dialog">
 
   </slot>
-  <el-dialog v-model="dialogTableVisible" title="Instructions" align-center :width="computeSizeOfDialog" @close="onDialogClose">
-    {{instructions}}
+<!--  <el-dialog v-model="dialogTableVisible" title="Instructions" align-center :width="computeSizeOfDialog" @close="onDialogClose">-->
+<!--    {{instructions}}-->
 <!--    place your face inside the circle so we can perform a liveness check and match to your photo-->
-  </el-dialog>
+<!--  </el-dialog>-->
   <el-dialog v-model="uploadComplete" title="Upload Complete" align-center :width="computeSizeOfDialog" @close="uploadDialogClose">
     upload completed!
   </el-dialog>
@@ -37,6 +44,7 @@ import CameraModule from "~/components/CameraModule.vue";
 import UploadFile from "~/components/UploadFile.vue";
 import { CameraFilled } from "@element-plus/icons-vue/global";
 import {useRouter} from "vue-router";
+import {usePictureStore} from "~/stores/pictureStore";
 
 export default {
   components: {
@@ -44,7 +52,7 @@ export default {
     CameraFilled,
     UploadFile,
   },
-  props: ['title','type','instructions'],
+  props: ['title','type','instructions','subtitle'],
   setup(props) {
     let dialogTableVisible= ref(true);
     let uploadComplete = ref(false);

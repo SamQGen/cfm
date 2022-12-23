@@ -16,6 +16,8 @@ import Camera from "easy-js-camera";
 
 import CameraButtonIcon from "~/components/CameraButtonIcon.vue";
 import {Check} from '@element-plus/icons-vue'
+import {usePictureStore} from "~/stores/pictureStore";
+
 export default {
   name: "CameraModule",
   components: {
@@ -82,9 +84,9 @@ export default {
           this.camera = camera
           camera.start()
           console.log('camera started')
-          camera.snap().then(data => {
-            console.log('data from snap ' , data)
-          })
+          // camera.snap().then(data => {
+          //   console.log('data from snap ' , data)
+          // })
 
         })
         .catch(error => {

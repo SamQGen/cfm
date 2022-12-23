@@ -2,12 +2,13 @@
   <upload-item
     title="Upload Selfie"
     type="person"
-    :instructions="dialogDescription"
+    :subtitle="subtitle"
   ></upload-item>
 </template>
 
 <script setup>
-let dialogDescription = 'place your face inside the circle so we csan verify your identity'
+let subtitle = 'place your face inside the circle so we csan verify your identity'
+
 
 </script>
 
