@@ -20,6 +20,7 @@
         <el-row class="footer">
           <el-button  :disabled="!checked" type="primary" @click="submit">Submit</el-button>
         </el-row>
+        <div class="oval"></div>
       </el-card>
 
 </template>
@@ -30,7 +31,11 @@
     justify-content: center;
   }
 
-
+  .oval {
+    width: 200px;
+    height: 100px;
+    border-radius: 100px / 50px;
+  }
 
 </style>
 

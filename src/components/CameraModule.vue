@@ -2,8 +2,10 @@
   <div class="" id="container center">
     <video class="center half" ref="videoSection" v-show="!isTaken" autoplay playsinline></video>
     <canvas class="center half" ref="canvasSection" v-show="isTaken"></canvas>
-    <div class="" id="overlay">
-      <CameraButtonIcon @button-clicked="buttonClicked"></CameraButtonIcon>
+    <div class="center" id="overlay">
+      <img class="center half transparent-image" src="../assets/user-mask.png" alt="">
+<!--      <CameraButtonIcon @button-clicked="buttonClicked"></CameraButtonIcon>-->
+
     </div>
   </div>
 
@@ -70,8 +72,16 @@ export default {
   bottom: 27%;
   left: 42%;
 }
+.transparent-image {
+  opacity: 0.5;
+}
+.oval {
+  width: 200px;
+  height: 100px;
+  border-radius: 100px / 50px;
+}
 .half{
-  width: 100%;
+  width: 560px;
   height: 100%;
 }
 #container {
@@ -79,10 +89,10 @@ export default {
   display: flex;
   justify-content: center;
 }
-#container canvas video, #overlay {
+#container canvas video img, #overlay {
   position: absolute;
-  bottom: 5%;
-  left: 42%;
+  bottom: 0%;
+  /*left: 42%;*/
 }
 canvas {
   border: 1px solid black;
@@ -93,6 +103,10 @@ canvas {
     /*justify-content: center;*/
     height: 100vh;
     width: 100vw;
+  }
+  .half{
+    width: 100%;
+    /*height: 100%;*/
   }
   #app {
     /*max-width: 1280px;*/

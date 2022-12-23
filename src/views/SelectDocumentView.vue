@@ -21,7 +21,6 @@
 <!--      </el-card>-->
   </el-row>
 
-
 </el-card>
 </template>
 
@@ -73,4 +72,5 @@ let verficationType = [
   display: flex;
   justify-content: center;
 }
+
 </style>
