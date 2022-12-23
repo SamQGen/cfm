@@ -3,7 +3,7 @@
     <video class="center half" ref="videoSection" v-show="!isTaken" autoplay playsinline></video>
     <canvas class="center half" ref="canvasSection" v-show="isTaken"></canvas>
     <div class="center" id="overlay">
-        <img v-if="applyMask" class="center half transparent-image" :src="applyMask" alt="">
+        <img v-if="applyMask && isLoaded" class="center half transparent-image" :src="applyMask" alt="">
 <!--      <CameraButtonIcon @button-clicked="buttonClicked"></CameraButtonIcon>-->
 
     </div>
@@ -73,6 +73,7 @@ export default {
   data() {
     return {
       isTaken: false,
+      isLoaded:false,
     };
   },
   mounted() {
@@ -84,6 +85,7 @@ export default {
           this.camera = camera
           camera.start()
           console.log('camera started')
+          this.isLoaded = true;
           // camera.snap().then(data => {
           //   console.log('data from snap ' , data)
           // })
