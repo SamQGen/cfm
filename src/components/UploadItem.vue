@@ -10,7 +10,7 @@
     </template>
     <el-container class="center">
       <el-space direction="vertical">
-        <camera-module :test="test" :type="type"></camera-module>
+        <camera-module :type="type"></camera-module>
         <div v-for="(item, i) in buttons" :key="i" class="">
           <el-row class="row-padding">
             <el-col col="6">
@@ -55,7 +55,6 @@
 //       camera: null,
 //       isTaken: false,
 //       mask: '../assets/IDCard.png',
-//       test: 'unmodified',
 //       buttons: [
 //         {
 //           name: 'Use Camera',
@@ -110,7 +109,6 @@
 //     },
 //     uploadDialogClose() {
 //       console.log('upload dialog closed');
-//       this.test = 'modified';
 //       // this.$router.push({name: 'upload-selfie' , params: {type: 'person'}});
 //       // this.$router.push({name: 'captured-image'});
 //     }
@@ -135,7 +133,6 @@ export default {
     let ourInterval = ref(null);
     const router = useRouter();
     const mask = ref("../assets/IDCard.png");
-    let test = ref("unmodified");
     const buttons = ref([
       {
         name: "Use Camera",
@@ -160,7 +157,6 @@ export default {
     };
     let uploadDialogClose = () => {
       console.log("upload dialog closed");
-      test.value = "modified";
       // usePictureStore().takePicture()
       // router.push({name: 'upload-selfie' , params: {type: 'person'}});
       router.push({ name: "captured-image" });
@@ -222,7 +218,6 @@ export default {
       uploadComplete,
       onDialogClose,
       uploadDialogClose,
-      test,
       takePicture,
     };
   },

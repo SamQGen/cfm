@@ -80,17 +80,6 @@ export default {
     let video = this.$refs.videoSection;
     let canvas = this.$refs.canvasSection;
     usePictureStore().setCamera(video, canvas);
-    // Camera
-    //     .tryInvokePermission(video,canvas)
-    //     .then(camera => {
-    //       this.camera = camera
-    //       camera.start()
-    //       console.log('camera started')
-    //       this.isLoaded = true;
-    //     })
-    //     .catch(error => {
-    //       // Mostly happens if the user blocks the camera or the media devices are not supported
-    //     });
   },
   unmounted() {
     usePictureStore().stopCamera();
