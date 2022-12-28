@@ -27,7 +27,7 @@
   <slot name="dialog">
 
   </slot>
-  <el-dialog v-model="uploadComplete" title="Upload Complete" align-center :width="computeSizeOfDialog" @close="uploadDialogClose">
+  <el-dialog v-model="uploadComplete" title="Upload Complete" align-center :width="computeSizeOfDialog" @close="uploadDialogClose" @opened="takePicture">
     upload completed!
   </el-dialog>
 </template>
@@ -163,9 +163,14 @@ export default {
     let uploadDialogClose = () => {
       console.log('upload dialog closed');
       test = 'modified';
-      usePictureStore().takePicture()
+      // usePictureStore().takePicture()
       // router.push({name: 'upload-selfie' , params: {type: 'person'}});
       router.push({name: 'captured-image'});
+    }
+
+    let takePicture = () => {
+      console.log('calling take picture')
+      usePictureStore().takePicture()
     }
 
 
@@ -210,7 +215,8 @@ export default {
       uploadComplete,
       onDialogClose,
       uploadDialogClose,
-      test
+      test,
+      takePicture
     }
   }
 }
