@@ -11,6 +11,7 @@ export const useSettings = defineStore("settings", {
     user: null,
   }),
   getters: {
+    getUser: (state) => state.user,
     //     allowMobile: (state) => state.allowMobile,
     //     allowPassport: (state) => state.allowPassport,
     //     allowPictureUpload: (state) => state.allowPictureUpload,
