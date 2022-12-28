@@ -8,6 +8,7 @@ import DrivingLicenseView from "~/views/DrivingLicenseView.vue";
 import SmartPhoneMessageView from "~/views/SmartPhoneMessageView.vue";
 import UploadImageView from "~/views/UploadImageView.vue";
 import UploadSelfieView from "~/views/UploadSelfieView.vue";
+import ViewCapturedImageView from "~/views/ViewCapturedImageView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -54,6 +55,11 @@ const router = createRouter({
       path: "/upload-selfie",
       name:'upload-selfie',
       component: UploadSelfieView,
+    },
+    {
+      path: "/captured-image",
+      name:'captured-image',
+      component: ViewCapturedImageView,
     },
   ],
 });

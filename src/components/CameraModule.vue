@@ -30,6 +30,11 @@ export default {
       default: false,
       required: false,
     },
+    test:{
+      type:String,
+      default: false,
+      required: false,
+    }
   },
   methods: {
     buttonClicked() {
@@ -46,6 +51,11 @@ export default {
         this.isTaken = true;
         console.log("data ", data);
       });
+    }
+  },
+  watch: {
+    test: function(nv,ov) {
+      console.log("test changed" , nv , 'this is old value ' , ov);
     }
   },
   computed:{
@@ -73,10 +83,11 @@ export default {
   data() {
     return {
       isTaken: false,
-      isLoaded:false,
+      isLoaded: false,
     };
   },
   mounted() {
+    console.log('this is the test value ' , this.test);
     let video = this.$refs.videoSection
     let canvas = this.$refs.canvasSection
     Camera
@@ -86,10 +97,6 @@ export default {
           camera.start()
           console.log('camera started')
           this.isLoaded = true;
-          // camera.snap().then(data => {
-          //   console.log('data from snap ' , data)
-          // })
-
         })
         .catch(error => {
           // Mostly happens if the user blocks the camera or the media devices are not supported
