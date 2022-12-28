@@ -3,7 +3,7 @@
     <video class="center half" ref="videoSection" v-show="!isTaken" autoplay playsinline></video>
     <canvas class="center half" ref="canvasSection" v-show="isTaken"></canvas>
     <div class="center" id="overlay">
-        <img v-if="applyMask && isLoaded" class="center half transparent-image" :src="applyMask" alt="">
+        <img v-if="applyMask " class="center half transparent-image" :src="applyMask" alt="">
 <!--      <CameraButtonIcon @button-clicked="buttonClicked"></CameraButtonIcon>-->
 
     </div>
@@ -90,17 +90,18 @@ export default {
     console.log('this is the test value ' , this.test);
     let video = this.$refs.videoSection
     let canvas = this.$refs.canvasSection
-    Camera
-        .tryInvokePermission(video,canvas)
-        .then(camera => {
-          this.camera = camera
-          camera.start()
-          console.log('camera started')
-          this.isLoaded = true;
-        })
-        .catch(error => {
-          // Mostly happens if the user blocks the camera or the media devices are not supported
-        });
+    usePictureStore().setCamera(video, canvas);
+    // Camera
+    //     .tryInvokePermission(video,canvas)
+    //     .then(camera => {
+    //       this.camera = camera
+    //       camera.start()
+    //       console.log('camera started')
+    //       this.isLoaded = true;
+    //     })
+    //     .catch(error => {
+    //       // Mostly happens if the user blocks the camera or the media devices are not supported
+    //     });
   },
   unmounted() {
     this.camera.stop()
