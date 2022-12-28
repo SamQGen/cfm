@@ -53,7 +53,7 @@ import {ref} from 'vue'
 import { useRoute,useRouter } from 'vue-router'
 const route = useRoute()
 const router = useRouter()
-const checked = ref(false)
+const checked = ref(true)
 let submit = () => {
   router.push({name: 'select-document'})
   console.log('submit hit')

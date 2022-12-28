@@ -21,10 +21,29 @@
       </el-col>
     </el-row>
   </el-space>
+  <img :src="image" alt="">
 </el-card>
 </template>
 
 <script setup>
+
+import {usePictureStore} from "~/stores/pictureStore";
+import {ref, watch} from "vue";
+let image = ref(null)
+let blob = usePictureStore().picture
+
+watch(() => usePictureStore().picture, (nv, ov) => {
+  let reader = new FileReader();
+  reader.readAsDataURL(nv);
+  reader.onloadend = function () {
+    let base64data = reader.result;
+    image.value = base64data;
+    console.log('this is the base 64 data ' , base64data);
+  };
+  console.log("blob changed", nv, ov);
+});
+
+
 let upload = () => {
   console.log('upload')
 }
