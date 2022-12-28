@@ -1,39 +1,42 @@
 <template>
-<el-card class="main-card">
-  <template #header>
-    <div class="header">
-      <el-space direction="vertical">
-        <h1>{{title}}</h1>
-        <h4>{{subtitle}} the picture will be captured automatically</h4>
-      </el-space>
-    </div>
-  </template>
-  <el-container class="center">
-    <el-space direction="vertical">
-      <camera-module :test="test" :type="type"></camera-module>
-      <div v-for="item in buttons" class="">
-        <el-row class="row-padding">
-          <el-col col="6" >
-            <el-button plain @click="upload(item)"> {{item.name}}</el-button>
-          </el-col>
-        </el-row>
+  <el-card class="main-card">
+    <template #header>
+      <div class="header">
+        <el-space direction="vertical">
+          <h1>{{ title }}</h1>
+          <h4>{{ subtitle }} the picture will be captured automatically</h4>
+        </el-space>
       </div>
-    </el-space>
-
-  </el-container>
-
-</el-card>
-
-  <slot name="dialog">
-
-  </slot>
-  <el-dialog v-model="uploadComplete" title="Upload Complete" align-center :width="computeSizeOfDialog" @close="uploadDialogClose" @opened="takePicture">
+    </template>
+    <el-container class="center">
+      <el-space direction="vertical">
+        <camera-module :test="test" :type="type"></camera-module>
+        <div v-for="(item, i) in buttons" :key="i" class="">
+          <el-row class="row-padding">
+            <el-col col="6">
+              <el-button plain @click="upload(item)">
+                {{ item.name }}</el-button
+              >
+            </el-col>
+          </el-row>
+        </div>
+      </el-space>
+    </el-container>
+  </el-card>
+  <slot name="dialog"> </slot>
+  <el-dialog
+    v-model="uploadComplete"
+    title="Upload Complete"
+    align-center
+    :width="computeSizeOfDialog"
+    @close="uploadDialogClose"
+    @opened="takePicture"
+  >
     upload completed!
   </el-dialog>
 </template>
 
-<script >
-
+<script>
 // import CameraModule from "~/components/CameraModule.vue";
 // import {CameraFilled} from "@element-plus/icons-vue";
 // import UploadFile from "~/components/UploadFile.vue";
@@ -114,77 +117,76 @@
 //   }
 // }
 
-import {ref, computed, onMounted, onUnmounted} from 'vue';
-import Camera from 'easy-js-camera';
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import CameraModule from "~/components/CameraModule.vue";
-import UploadFile from "~/components/UploadFile.vue";
-import { CameraFilled } from "@element-plus/icons-vue/global";
-import {useRouter} from "vue-router";
-import {usePictureStore} from "~/stores/pictureStore";
+import { useRouter } from "vue-router";
+import { usePictureStore } from "~/stores/pictureStore";
 
 export default {
   components: {
     CameraModule,
-    CameraFilled,
-    UploadFile,
   },
-  props: ['title','type','instructions','subtitle'],
+  props: ["title", "type", "instructions", "subtitle"],
   setup(props) {
-    let dialogTableVisible= ref(true);
+    let dialogTableVisible = ref(true);
     let uploadComplete = ref(false);
     const camera = ref(null);
     const isTaken = ref(false);
     let ourInterval = ref(null);
     const router = useRouter();
     const mask = ref("../assets/IDCard.png");
-    let test = ref('unmodified');
+    let test = ref("unmodified");
     const buttons = ref([
       {
-        name: 'Use Camera',
-        icon: 'camera',
-        to: '',
+        name: "Use Camera",
+        icon: "camera",
+        to: "",
       },
       {
-        name: 'Upload Image',
-        icon: 'upload',
-        to: 'upload-image',
+        name: "Upload Image",
+        icon: "upload",
+        to: "upload-image",
       },
       {
-        name: 'Continue on smartphone',
-        icon: 'phone',
-        to: 'continue-on-smartphone',
-      }
+        name: "Continue on smartphone",
+        icon: "phone",
+        to: "continue-on-smartphone",
+      },
     ]);
     const windowWidth = ref(window.innerWidth);
 
     let onDialogClose = () => {
-      console.log('dialog closed');
-    }
+      console.log("dialog closed");
+    };
     let uploadDialogClose = () => {
-      console.log('upload dialog closed');
-      test = 'modified';
+      console.log("upload dialog closed");
+      test.value = "modified";
       // usePictureStore().takePicture()
       // router.push({name: 'upload-selfie' , params: {type: 'person'}});
-      router.push({name: 'captured-image'});
-    }
+      router.push({ name: "captured-image" });
+    };
 
     let takePicture = () => {
-      console.log('calling take picture')
-      usePictureStore().takePicture()
-    }
-
+      console.log("calling take picture");
+      usePictureStore().takePicture();
+    };
 
     onMounted(() => {
-      window.addEventListener('resize', () => {
+      window.addEventListener("resize", () => {
         windowWidth.value = window.innerWidth;
       });
-      console.log('this is the mounted props' , props.type);
+      console.log("this is the mounted props", props.type);
       //mocking taking the picture
-      ourInterval = setInterval(() => {
-        if (props.type !== 'person'){
-          console.log('why are we in here ' , props.type, ' ', props.type !== 'person');
+      ourInterval.value = setInterval(() => {
+        if (props.type !== "person") {
+          console.log(
+            "why are we in here ",
+            props.type,
+            " ",
+            props.type !== "person"
+          );
           uploadComplete.value = true;
-          console.log('in our set interval',uploadComplete.value);
+          console.log("in our set interval", uploadComplete.value);
         }
       }, 5000);
     });
@@ -194,14 +196,19 @@ export default {
       // window.removeEventListener('resize', this.onResize);
     });
     const computeSizeOfDialog = computed(() => {
-      let size = windowWidth.value > 650 ? '30%' : '90%';
-      console.log('computing size of dialog ' , windowWidth.value , ' and this is what we return ' , size);
-      return size
+      let size = windowWidth.value > 650 ? "30%" : "90%";
+      console.log(
+        "computing size of dialog ",
+        windowWidth.value,
+        " and this is what we return ",
+        size
+      );
+      return size;
     });
 
     let upload = (item) => {
-      console.log('upload', item);
-      router.push({name:item.to , params: {type: 'person'}});
+      console.log("upload", item);
+      router.push({ name: item.to, params: { type: "person" } });
     };
 
     return {
@@ -216,17 +223,16 @@ export default {
       onDialogClose,
       uploadDialogClose,
       test,
-      takePicture
-    }
-  }
-}
+      takePicture,
+    };
+  },
+};
 
 // have to use options
 </script>
 
 <style scoped>
-.row-padding{
+.row-padding {
   padding: 10px;
 }
-
 </style>

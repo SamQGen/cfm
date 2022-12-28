@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
 import AboutView from "../views/AboutView.vue";
 import SelectDocumentView from "~/views/SelectDocumentView.vue";
 import UploadPassportView from "~/views/UploadPassportView.vue";
@@ -9,7 +8,6 @@ import SmartPhoneMessageView from "~/views/SmartPhoneMessageView.vue";
 import UploadImageView from "~/views/UploadImageView.vue";
 import UploadSelfieView from "~/views/UploadSelfieView.vue";
 import ViewCapturedImageView from "~/views/ViewCapturedImageView.vue";
-import VerificationView from "~/views/VerificationView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,7 +15,7 @@ const router = createRouter({
     {
       path: "/",
       name: "default",
-      component: VerificationView,
+      component: AboutView,
     },
     {
       path: "/select-document",
@@ -29,37 +27,37 @@ const router = createRouter({
     },
     {
       path: "/upload-passport",
-      name:'upload-passport',
-      component: UploadPassportView
+      name: "upload-passport",
+      component: UploadPassportView,
     },
     {
       path: "/upload-id",
-      name:'upload-id',
+      name: "upload-id",
       component: IdCardView,
     },
     {
       path: "/upload-driving-license",
-      name:'upload-dl',
+      name: "upload-dl",
       component: DrivingLicenseView,
     },
     {
       path: "/continue-on-smartphone",
-      name:'continue-on-smartphone',
+      name: "continue-on-smartphone",
       component: SmartPhoneMessageView,
     },
     {
       path: "/upload-file",
-      name:'upload-image',
+      name: "upload-image",
       component: UploadImageView,
     },
     {
       path: "/upload-selfie",
-      name:'upload-selfie',
+      name: "upload-selfie",
       component: UploadSelfieView,
     },
     {
       path: "/captured-image",
-      name:'captured-image',
+      name: "captured-image",
       component: ViewCapturedImageView,
     },
   ],

@@ -1,84 +1,74 @@
 <template>
   <div class="" id="container center">
-    <video class="center half" ref="videoSection" v-show="!isTaken" autoplay playsinline></video>
+    <video
+      class="center half"
+      ref="videoSection"
+      v-show="!isTaken"
+      autoplay
+      playsinline
+    ></video>
     <canvas class="center half" ref="canvasSection" v-show="isTaken"></canvas>
     <div class="center" id="overlay">
-        <img v-if="applyMask " class="center half transparent-image" :src="applyMask" alt="">
-<!--      <CameraButtonIcon @button-clicked="buttonClicked"></CameraButtonIcon>-->
-
+      <img
+        v-if="applyMask"
+        class="center half transparent-image"
+        :src="applyMask"
+        alt=""
+      />
+      <!--      <CameraButtonIcon @button-clicked="buttonClicked"></CameraButtonIcon>-->
     </div>
   </div>
-
 </template>
 
 <script>
-import Camera from "easy-js-camera";
-
-import CameraButtonIcon from "~/components/CameraButtonIcon.vue";
-import {Check} from '@element-plus/icons-vue'
-import {usePictureStore} from "~/stores/pictureStore";
+import { usePictureStore } from "~/stores/pictureStore";
 
 export default {
   name: "CameraModule",
-  components: {
-    Check,
-    CameraButtonIcon,
-  },
-  props:{
+  components: {},
+  props: {
     type: {
       type: String,
-      default: false,
+      default: "default",
       required: false,
     },
-    test:{
-      type:String,
-      default: false,
-      required: false,
-    }
   },
   methods: {
     buttonClicked() {
       console.log("button clicked camera module");
-      if (this.isTaken){
+      if (this.isTaken) {
         this.isTaken = false;
-      }
-      else {
+      } else {
         this.takePicture();
       }
     },
-    takePicture(){
+    takePicture() {
       this.camera.snapAsBlob().then((data) => {
         this.isTaken = true;
         console.log("data ", data);
       });
-    }
+    },
   },
-  watch: {
-    test: function(nv,ov) {
-      console.log("test changed" , nv , 'this is old value ' , ov);
-    }
-  },
-  computed:{
-    applyMask(){
+  computed: {
+    applyMask() {
       switch (this.type) {
-        case 'id':
-          console.log('this is the type id')
-          return 'src/assets/IDCard.png';
-        case 'dl':
-          console.log('this is the type dl')
-          return 'src/assets/DriversLicense.png';
-        case 'person':
-          console.log('this is the type person')
-          return 'src/assets/user-mask.png';
-        case 'passport':
-          console.log('this is the type passport')
-          return 'src/assets/passport.png';
+        case "id":
+          console.log("this is the type id");
+          return "src/assets/IDCard.png";
+        case "dl":
+          console.log("this is the type dl");
+          return "src/assets/DriversLicense.png";
+        case "person":
+          console.log("this is the type person");
+          return "src/assets/user-mask.png";
+        case "passport":
+          console.log("this is the type passport");
+          return "src/assets/passport.png";
         default:
           return false;
       }
-    }
+    },
   },
-
 
   data() {
     return {
@@ -87,9 +77,8 @@ export default {
     };
   },
   mounted() {
-    console.log('this is the test value ' , this.test);
-    let video = this.$refs.videoSection
-    let canvas = this.$refs.canvasSection
+    let video = this.$refs.videoSection;
+    let canvas = this.$refs.canvasSection;
     usePictureStore().setCamera(video, canvas);
     // Camera
     //     .tryInvokePermission(video,canvas)
@@ -105,13 +94,13 @@ export default {
   },
   unmounted() {
     usePictureStore().stopCamera();
-    console.log('camera unmounted!!!!!')
-  }
-}
+    console.log("camera unmounted!!!!!");
+  },
+};
 </script>
 
 <style scoped>
-.camera-button{
+.camera-button {
   z-index: 2;
   position: absolute;
   bottom: 27%;
@@ -125,7 +114,7 @@ export default {
   height: 100px;
   border-radius: 100px / 50px;
 }
-.half{
+.half {
   width: 560px;
   height: 100%;
 }
@@ -134,7 +123,8 @@ export default {
   display: flex;
   justify-content: center;
 }
-#container canvas video img, #overlay {
+#container canvas video img,
+#overlay {
   position: absolute;
   bottom: 0%;
   /*left: 42%;*/
@@ -149,19 +139,17 @@ canvas {
     height: 100vh;
     width: 100vw;
   }
-  .half{
+  .half {
     width: 100%;
     /*height: 100%;*/
   }
   #app {
     /*max-width: 1280px;*/
-    margin: 0 ;
+    margin: 0;
     padding: 0;
     /*display: flex;*/
     /*justify-content: center;*/
     font-weight: normal;
   }
 }
-
-
 </style>

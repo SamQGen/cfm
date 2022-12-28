@@ -7,11 +7,8 @@
 </template>
 
 <script setup>
-let subtitle = 'place your face inside the circle so we csan verify your identity'
-
-
+let subtitle =
+  "place your face inside the circle so we can verify your identity";
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
