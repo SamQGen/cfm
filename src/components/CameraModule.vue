@@ -104,7 +104,7 @@ export default {
     //     });
   },
   unmounted() {
-    this.camera.stop()
+    usePictureStore().stopCamera();
     console.log('camera unmounted!!!!!')
   }
 }

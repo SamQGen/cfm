@@ -134,6 +134,7 @@ export default {
     let uploadComplete = ref(false);
     const camera = ref(null);
     const isTaken = ref(false);
+    let ourInterval = ref(null);
     const router = useRouter();
     const mask = ref("../assets/IDCard.png");
     let test = ref('unmodified');
@@ -174,7 +175,7 @@ export default {
       });
       console.log('this is the mounted props' , props.type);
       //mocking taking the picture
-      let ourInterval = setInterval(() => {
+      ourInterval = setInterval(() => {
         if (props.type !== 'person'){
           console.log('why are we in here ' , props.type, ' ', props.type !== 'person');
           uploadComplete.value = true;
@@ -184,6 +185,7 @@ export default {
     });
 
     onUnmounted(() => {
+      clearInterval(ourInterval);
       // window.removeEventListener('resize', this.onResize);
     });
     const computeSizeOfDialog = computed(() => {
