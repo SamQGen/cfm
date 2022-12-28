@@ -9,19 +9,16 @@
     </div>
   </template>
 <!--  body -->
-  <el-space class="vertical">
-<el-row class="row-padding">
-      <el-col col="6" >
+<el-row class="row-padding" justify="center">
         <el-button plain @click="upload"> Upload</el-button>
-      </el-col>
     </el-row>
-    <el-row class="row-padding">
-      <el-col col="6" >
+    <el-row class="row-padding" justify="center">
         <el-button plain @click="retake"> Retake</el-button>
-      </el-col>
     </el-row>
-  </el-space>
-  <img :src="image" alt="">
+  <el-row justify="center">
+    <img :src="image" alt="">
+  </el-row>
+
 </el-card>
 </template>
 
