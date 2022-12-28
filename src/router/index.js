@@ -8,6 +8,7 @@ import SmartPhoneMessageView from "~/views/SmartPhoneMessageView.vue";
 import UploadImageView from "~/views/UploadImageView.vue";
 import UploadSelfieView from "~/views/UploadSelfieView.vue";
 import ViewCapturedImageView from "~/views/ViewCapturedImageView.vue";
+import VerificationView from "~/views/VerificationView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -59,6 +60,11 @@ const router = createRouter({
       path: "/captured-image",
       name: "captured-image",
       component: ViewCapturedImageView,
+    },
+    {
+      path: "/verification-view",
+      name: "verification-view",
+      component: VerificationView,
     },
   ],
 });

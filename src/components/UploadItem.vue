@@ -119,6 +119,7 @@ import { ref, computed, onMounted, onUnmounted } from "vue";
 import CameraModule from "~/components/CameraModule.vue";
 import { useRouter } from "vue-router";
 import { usePictureStore } from "~/stores/pictureStore";
+import { useRouteStore } from "~/stores/routeStore";
 
 export default {
   components: {
@@ -130,7 +131,7 @@ export default {
     let uploadComplete = ref(false);
     const camera = ref(null);
     const isTaken = ref(false);
-    let ourInterval = ref(null);
+    let ourInterval = null;
     const router = useRouter();
     const mask = ref("../assets/IDCard.png");
     const buttons = ref([
@@ -167,27 +168,36 @@ export default {
       usePictureStore().takePicture();
     };
 
+    let caluclateNextRoute = () => {
+      console.log("calculating next route");
+      if (props.type !== "person") {
+        let nextRoute = { name: "upload-selfie", params: { type: "person" } };
+        useRouteStore().setRoute(nextRoute);
+        console.log("inside calculate next route");
+        // router.push({ name: "upload-selfie", params: { type: "person" } });
+      } else if (props.type === "person") {
+        let nextRoute = { name: "verification-view" };
+        useRouteStore().setRoute(nextRoute);
+      }
+    };
+
     onMounted(() => {
       window.addEventListener("resize", () => {
         windowWidth.value = window.innerWidth;
       });
+      caluclateNextRoute();
       console.log("this is the mounted props", props.type);
       //mocking taking the picture
-      ourInterval.value = setInterval(() => {
-        if (props.type !== "person") {
-          console.log(
-            "why are we in here ",
-            props.type,
-            " ",
-            props.type !== "person"
-          );
-          uploadComplete.value = true;
-          console.log("in our set interval", uploadComplete.value);
-        }
+      ourInterval = setInterval(() => {
+        // if (props.type !== "person") {
+        uploadComplete.value = true;
+        console.log("in our set interval", uploadComplete.value);
+        // }
       }, 5000);
     });
 
     onUnmounted(() => {
+      console.log("in unmoutned clearing the interval fomr upload item");
       clearInterval(ourInterval);
       // window.removeEventListener('resize', this.onResize);
     });

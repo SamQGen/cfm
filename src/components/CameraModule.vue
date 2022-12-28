@@ -32,6 +32,10 @@ export default {
       default: "default",
       required: false,
     },
+    mask: {
+      type: String,
+      required: false,
+    },
   },
   methods: {
     buttonClicked() {

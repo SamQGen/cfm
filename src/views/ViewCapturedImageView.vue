@@ -22,9 +22,11 @@
 <script setup>
 import { usePictureStore } from "~/stores/pictureStore";
 import { ref, watch } from "vue";
+import { useRouteStore } from "~/stores/routeStore";
+import { useRouter } from "vue-router";
 let image = ref(null);
 let blob = usePictureStore().picture;
-
+const router = useRouter();
 watch(
   () => usePictureStore().picture,
   (nv) => {
@@ -47,6 +49,9 @@ if (blob) {
 }
 
 let upload = () => {
+  let nextRoute = useRouteStore().route;
+  console.log("this is the next route ", nextRoute);
+  router.push(nextRoute);
   console.log("upload");
 };
 let retake = () => {
