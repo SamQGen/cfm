@@ -129,15 +129,11 @@
 // }
 
 import { ref, computed, onMounted, onUnmounted } from "vue";
-import CameraModule from "~/components/CameraModule.vue";
 import { useRouter } from "vue-router";
 import { usePictureStore } from "~/stores/pictureStore";
 import { useRouteStore } from "~/stores/routeStore";
 
 export default {
-  components: {
-    CameraModule,
-  },
   props: ["title", "type", "instructions", "subtitle"],
   setup(props) {
     let dialogTableVisible = ref(true);
