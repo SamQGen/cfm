@@ -10,6 +10,7 @@ import UploadSelfieView from "~/views/UploadSelfieView.vue";
 import ViewCapturedImageView from "~/views/ViewCapturedImageView.vue";
 import VerificationView from "~/views/VerificationView.vue";
 import InstructionsView from "~/views/InstructionsView.vue";
+import layoutContainerTest from "~/views/layoutContainerTest.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,7 +18,7 @@ const router = createRouter({
     {
       path: "/",
       name: "default",
-      component: InstructionsView,
+      component: layoutContainerTest,
     },
     {
       path: "/select-document",

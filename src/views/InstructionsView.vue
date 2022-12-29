@@ -1,27 +1,31 @@
 <template>
-  <el-card class="main-card">
+  <el-card class="main-card" body-style="background-color">
     <template #header>
       <el-row justify="center">
         <h1>Hi {{ name }}</h1>
       </el-row>
     </template>
-    <el-row justify="center">
-      <el-col :md="MD_SIZE" :sm="SM_SIZE" :xs="XS_SIZE">
-        <h4>
-          You will be requested to capture images from your phone. You will be
-          asked to allow the pages to access your camera. Click 'Allow' and
-          proceed.
-        </h4>
-      </el-col>
-    </el-row>
-    <el-row justify="center">
-      <el-button> OK </el-button>
-    </el-row>
-    <el-row justify="center">
-      <el-button type="primary" text>
-        Not James? Login with someone else
-      </el-button>
-    </el-row>
+    <template #default>
+      <div>
+        <el-row justify="center">
+          <el-col :md="MD_SIZE" :sm="SM_SIZE" :xs="XS_SIZE">
+            <h4>
+              You will be requested to capture images from your phone. You will
+              be asked to allow the pages to access your camera. Click 'Allow'
+              and proceed.
+            </h4>
+            <el-row justify="center">
+              <el-button> OK </el-button>
+            </el-row>
+            <el-row justify="center">
+              <el-button type="primary" text>
+                Not James? Login with some100one else
+              </el-button>
+            </el-row>
+          </el-col>
+        </el-row>
+      </div>
+    </template>
   </el-card>
 </template>
 
@@ -40,4 +44,10 @@ watch(
 );
 </script>
 
-<style scoped></style>
+<style scoped>
+.big-fill {
+  height: 100%;
+  background-color: #67c23a;
+  margin: 20px;
+}
+</style>
