@@ -8,9 +8,22 @@
         </el-space>
       </div>
     </template>
-    <el-container class="center">
+    <el-container class="center content-container">
       <el-space direction="vertical">
-        <camera-module :type="type"></camera-module>
+        <!--        <camera-module :type="type"></camera-module>-->
+        <el-container
+          direction="vertical"
+          class="content-container"
+          style="height: 200px; border: #67c23a solid 1px; padding: 20px"
+        >
+          <el-row justify="center"> • All 4 corners must be visible </el-row>
+
+          <el-row justify="center"> • No reflections or glare </el-row>
+
+          <el-row justify="center"> • Well lit </el-row>
+
+          <el-row justify="center"> • Sharp not blurred </el-row>
+        </el-container>
         <div v-for="(item, i) in buttons" :key="i" class="">
           <el-row class="row-padding">
             <el-col col="6">
@@ -138,7 +151,7 @@ export default {
       {
         name: "Use Camera",
         icon: "camera",
-        to: "",
+        to: "camera-view",
       },
       {
         name: "Upload Image",
@@ -185,15 +198,14 @@ export default {
       window.addEventListener("resize", () => {
         windowWidth.value = window.innerWidth;
       });
+      useRouteStore().setType(props.type);
       caluclateNextRoute();
       console.log("this is the mounted props", props.type);
       //mocking taking the picture
-      ourInterval = setInterval(() => {
-        // if (props.type !== "person") {
-        uploadComplete.value = true;
-        console.log("in our set interval", uploadComplete.value);
-        // }
-      }, 5000);
+      // ourInterval = setInterval(() => {
+      //   uploadComplete.value = true;
+      //   console.log("in our set interval", uploadComplete.value);
+      // }, 5000);
     });
 
     onUnmounted(() => {

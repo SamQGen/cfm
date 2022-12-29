@@ -11,6 +11,7 @@ import ViewCapturedImageView from "~/views/ViewCapturedImageView.vue";
 import VerificationView from "~/views/VerificationView.vue";
 import InstructionsView from "~/views/InstructionsView.vue";
 import layoutContainerTest from "~/views/layoutContainerTest.vue";
+import CameraView from "~/views/CameraView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,7 +19,7 @@ const router = createRouter({
     {
       path: "/",
       name: "default",
-      component: InstructionsView,
+      component: AboutView,
     },
     {
       path: "/select-document",
@@ -67,6 +68,21 @@ const router = createRouter({
       path: "/verification-view",
       name: "verification-view",
       component: VerificationView,
+    },
+    {
+      path: "/instructions-view",
+      name: "instructions-view",
+      component: InstructionsView,
+    },
+    {
+      path: "/layout-container-test",
+      name: "layout-container-test",
+      component: layoutContainerTest,
+    },
+    {
+      path: "/camera-capture",
+      name: "camera-view",
+      component: CameraView,
     },
   ],
 });
