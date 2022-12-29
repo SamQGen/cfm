@@ -6,17 +6,21 @@
       </el-row>
     </template>
     <el-row justify="center">
-      <h4>
-        You will be requested to capture images from your phone. You will be
-        asked to allow the pages to access your camera. Click 'Allow' and
-        proceed.
-      </h4>
+      <el-col :md="MD_SIZE" :sm="SM_SIZE" :xs="XS_SIZE">
+        <h4>
+          You will be requested to capture images from your phone. You will be
+          asked to allow the pages to access your camera. Click 'Allow' and
+          proceed.
+        </h4>
+      </el-col>
     </el-row>
     <el-row justify="center">
       <el-button> OK </el-button>
     </el-row>
     <el-row justify="center">
-      <el-button text> Not James? Login with someone else </el-button>
+      <el-button type="primary" text>
+        Not James? Login with someone else
+      </el-button>
     </el-row>
   </el-card>
 </template>
@@ -24,6 +28,7 @@
 <script setup>
 import { useSettings } from "~/stores/userSettings";
 import { ref, watch } from "vue";
+import { MD_SIZE, SM_SIZE, XS_SIZE } from "~/assets/columnSizes";
 let name = ref(null);
 console.log("this is the settings ", useSettings().name);
 watch(

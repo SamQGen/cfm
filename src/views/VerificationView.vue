@@ -12,7 +12,7 @@
         </el-icon>
       </el-row>
       <el-row justify="center" align="end">
-        <el-col :md="10" class="loading-icon" :sm="20" :xs="20">
+        <el-col :md="MD_SIZE" class="loading-icon" :sm="SM_SIZE" :xs="XS_SIZE">
           <h2>
             We are currently reviewing your images. This may take up to 10 mins
           </h2>
@@ -28,6 +28,7 @@
 
 <script setup>
 import { Loading } from "@element-plus/icons-vue";
+import { MD_SIZE, SM_SIZE, XS_SIZE } from "~/assets/columnSizes";
 </script>
 
 <style scoped>
