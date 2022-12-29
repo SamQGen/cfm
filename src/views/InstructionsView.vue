@@ -6,7 +6,7 @@
       </el-row>
     </template>
     <template #default>
-      <div>
+      <el-main style="" class="content-container">
         <el-row justify="center">
           <el-col :md="MD_SIZE" :sm="SM_SIZE" :xs="XS_SIZE">
             <h4>
@@ -14,17 +14,17 @@
               be asked to allow the pages to access your camera. Click 'Allow'
               and proceed.
             </h4>
-            <el-row justify="center">
-              <el-button> OK </el-button>
-            </el-row>
-            <el-row justify="center">
-              <el-button type="primary" text>
-                Not James? Login with some100one else
-              </el-button>
-            </el-row>
           </el-col>
         </el-row>
-      </div>
+        <el-row justify="center">
+          <el-button> OK </el-button>
+        </el-row>
+        <el-row justify="center">
+          <el-button type="primary" text>
+            Not James? Login with some100one else
+          </el-button>
+        </el-row>
+      </el-main>
     </template>
   </el-card>
 </template>
@@ -44,10 +44,4 @@ watch(
 );
 </script>
 
-<style scoped>
-.big-fill {
-  height: 100%;
-  background-color: #67c23a;
-  margin: 20px;
-}
-</style>
+<style scoped></style>

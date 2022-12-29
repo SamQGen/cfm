@@ -18,7 +18,7 @@ const router = createRouter({
     {
       path: "/",
       name: "default",
-      component: layoutContainerTest,
+      component: InstructionsView,
     },
     {
       path: "/select-document",
