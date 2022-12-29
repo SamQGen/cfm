@@ -4,6 +4,7 @@ export const usePictureStore = defineStore("picture", {
   state: () => ({
     picture: null,
     camera: null,
+    cameraLoaded: false,
   }),
   getters: {
     //     allowMobile: (state) => state.allowMobile,
@@ -22,7 +23,7 @@ export const usePictureStore = defineStore("picture", {
           this.camera = camera;
           camera.start();
           console.log("camera started");
-          this.isLoaded = true;
+          this.cameraLoaded = true;
         })
         .catch((error) => {
           console.log("camera error", error);
@@ -32,6 +33,7 @@ export const usePictureStore = defineStore("picture", {
     stopCamera() {
       this.camera.stop();
       this.camera = null;
+      this.cameraLoaded = false;
     },
     takePicture() {
       this.camera.snapAsBlob().then((photo) => {

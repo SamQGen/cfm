@@ -19,7 +19,7 @@
         </el-col>
       </el-row>
       <el-row justify="center" align="end" class="loading-icon">
-        <el-button> close </el-button>
+        <el-button @click="goStart"> close </el-button>
       </el-row>
     </div>
   </el-card>
@@ -29,6 +29,11 @@
 <script setup>
 import { Loading } from "@element-plus/icons-vue";
 import { MD_SIZE, SM_SIZE, XS_SIZE } from "~/assets/columnSizes";
+import { useRouter } from "vue-router";
+const router = useRouter();
+const goStart = () => {
+  router.push({ name: "default" });
+};
 </script>
 
 <style scoped>

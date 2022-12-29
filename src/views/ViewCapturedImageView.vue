@@ -9,8 +9,8 @@
       </div>
     </template>
     <!--  body -->
-    <el-row justify="center">
-      <img :src="image" alt="" />
+    <el-row justify="center" id="container" class="half">
+      <img class="center half" :src="image" alt="" />
     </el-row>
     <el-row class="row-padding" justify="space-evenly">
       <el-button plain @click="retake"> Retake</el-button>
@@ -55,6 +55,7 @@ let upload = () => {
   console.log("upload");
 };
 let retake = () => {
+  router.back();
   console.log("retake");
 };
 </script>
@@ -62,5 +63,34 @@ let retake = () => {
 <style scoped>
 .row-padding {
   margin-top: 20px;
+}
+#container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.half {
+  width: 560px;
+  height: 100%;
+}
+@media only screen and (max-width: 600px) {
+  .main-card {
+    /*display: flex;*/
+    /*justify-content: center;*/
+    height: 100vh;
+    width: 100vw;
+  }
+  .half {
+    width: 100%;
+    /*height: 100%;*/
+  }
+  #app {
+    /*max-width: 1280px;*/
+    margin: 0;
+    padding: 0;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    font-weight: normal;
+  }
 }
 </style>

@@ -10,7 +10,7 @@
     <canvas class="center half" ref="canvasSection" v-show="isTaken"></canvas>
     <div class="center" id="overlay">
       <img
-        v-if="applyMask"
+        v-if="applyMask && isCameraLoaded"
         class="center half transparent-image"
         :src="applyMask"
         alt=""
@@ -54,6 +54,11 @@ export default {
     },
   },
   computed: {
+    isCameraLoaded() {
+      let loaded = usePictureStore().cameraLoaded;
+      console.log("is camera loaded", loaded);
+      return loaded;
+    },
     applyMask() {
       switch (this.type) {
         case "id":

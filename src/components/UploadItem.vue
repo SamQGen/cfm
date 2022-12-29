@@ -16,13 +16,9 @@
           class="content-container"
           style="height: 200px; border: #67c23a solid 1px; padding: 20px"
         >
-          <el-row justify="center"> • All 4 corners must be visible </el-row>
-
-          <el-row justify="center"> • No reflections or glare </el-row>
-
-          <el-row justify="center"> • Well lit </el-row>
-
-          <el-row justify="center"> • Sharp not blurred </el-row>
+          <ul class="content-container">
+            <li v-for="(item, i) in calculatedList" :key="i">{{ item }}</li>
+          </ul>
         </el-container>
         <div v-for="(item, i) in buttons" :key="i" class="">
           <el-row class="row-padding">
@@ -143,6 +139,25 @@ export default {
     let ourInterval = null;
     const router = useRouter();
     const mask = ref("../assets/IDCard.png");
+    const idList = [
+      "All 4 corners must be visible",
+      "No reflections or glare",
+      "Well lit",
+      "Sharp not blurred",
+    ];
+    const personList = [
+      "fill up the area with your face",
+      "look straight ahead",
+      "have no expression",
+      "no sunglasses",
+    ];
+    const calculatedList = computed(() => {
+      if (props.type === "person") {
+        return personList;
+      } else {
+        return idList;
+      }
+    });
     const buttons = ref([
       {
         name: "Use Camera",
@@ -237,6 +252,7 @@ export default {
       onDialogClose,
       uploadDialogClose,
       takePicture,
+      calculatedList,
     };
   },
 };
