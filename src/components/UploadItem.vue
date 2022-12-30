@@ -1,10 +1,9 @@
 <template>
-  <el-card class="main-card">
+  <el-card class="card">
     <template #header>
-      <el-space direction="vertical">
-        <h1>{{ title }}</h1>
-        <h4>{{ subtitle }} the picture will be captured automatically</h4>
-      </el-space>
+      <el-row justify="center">
+        <h1>{{ title }} </h1>
+      </el-row>
     </template>
     <el-container class="content-container">
       <el-space direction="vertical">
@@ -126,8 +125,9 @@ import { useRouter } from "vue-router";
 import { usePictureStore } from "~/stores/pictureStore";
 import { useRouteStore } from "~/stores/routeStore";
 import { useSettings } from "~/stores/userSettings";
+import {usePageInfoStore} from "~/stores/pageInfoStore";
 export default {
-  props: ["title", "type", "instructions", "subtitle"],
+  props: ["title", "type", "instructions","subtitle"],
   setup(props) {
     let dialogTableVisible = ref(true);
     let uploadComplete = ref(false);
@@ -136,6 +136,8 @@ export default {
     let ourInterval = null;
     const router = useRouter();
     const useSettingsStore = useSettings();
+    const pageInfoStore = usePageInfoStore();
+    pageInfoStore.setSubtitle(props.subtitle);
     const mask = ref("../assets/IDCard.png");
     const idList = [
       "All 4 corners must be visible",

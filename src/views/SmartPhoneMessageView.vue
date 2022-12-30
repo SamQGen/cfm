@@ -1,5 +1,5 @@
 <template>
-  <el-card class="main-card">
+  <el-card class="card">
     <template #header>
       <el-row justify="center">
         <h1>Use Your Smart Phone</h1>

@@ -5,7 +5,7 @@ import App from "./App.vue";
 import router from "./router/index.js";
 
 
-import "./assets/main.css";
+import "./assets/main.scss";
 
 // import './styles/element/index.scss'
 // import ElementPlus from 'element-plus'
