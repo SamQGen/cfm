@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import AboutView from "../views/AboutView.vue";
+import AboutView from "../views/AcceptTermsView.vue";
 import SelectDocumentView from "~/views/SelectDocumentView.vue";
 import UploadPassportView from "~/views/UploadPassportView.vue";
 import IdCardView from "~/views/IdCardView.vue";

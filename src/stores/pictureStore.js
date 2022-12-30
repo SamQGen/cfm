@@ -6,12 +6,7 @@ export const usePictureStore = defineStore("picture", {
     camera: null,
     cameraLoaded: false,
   }),
-  getters: {
-    //     allowMobile: (state) => state.allowMobile,
-    //     allowPassport: (state) => state.allowPassport,
-    //     allowPictureUpload: (state) => state.allowPictureUpload,
-    //     allowIDCard: (state) => state.allowIDCard
-  },
+  getters: {},
   actions: {
     // any amount of arguments, return a promise or not
     setPicture(picture) {

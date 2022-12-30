@@ -10,11 +10,7 @@
   </el-container>
 </template>
 
-<script>
-export default {
-  name: "layoutContainerTest",
-};
-</script>
+<script></script>
 
 <style scoped>
 /*if we use this class instead of el-card we have to change the main style sheet app to have width 80%*/
