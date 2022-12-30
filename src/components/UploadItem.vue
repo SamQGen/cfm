@@ -2,7 +2,7 @@
   <el-card class="card">
     <template #header>
       <el-row justify="center">
-        <h1>{{ title }} </h1>
+        <h1>{{ title }}</h1>
       </el-row>
     </template>
     <el-container class="content-container">
@@ -41,93 +41,19 @@
   </el-dialog>
 </template>
 
-<script>
-// import CameraModule from "~/components/CameraModule.vue";
-// import {CameraFilled} from "@element-plus/icons-vue";
-// import UploadFile from "~/components/UploadFile.vue";
-//
-// export default {
-//   components: {
-//     CameraModule,
-//     CameraFilled,
-//     UploadFile,
-//   },
-//   props: ['title','type','instructions','subtitle'],
-//   data() {
-//     return {
-//       dialogTableVisible: true,
-//       uploadComplete: false,
-//       camera: null,
-//       isTaken: false,
-//       mask: '../assets/IDCard.png',
-//       buttons: [
-//         {
-//           name: 'Use Camera',
-//           icon: 'camera',
-//           to: '',
-//         },
-//         {
-//           name: 'Upload Image',
-//           icon: 'upload',
-//           to: 'upload-image',
-//         },
-//         {
-//           name: 'Continue on smartphone',
-//           icon: 'phone',
-//           to: 'continue-on-smartphone',
-//         }
-//       ],
-//       windowWidth: window.innerWidth
-//     }
-//   },
-//   mounted() {
-//     window.addEventListener('resize', () => {
-//       this.windowWidth = window.innerWidth;
-//     });
-//     console.log('this is the mounted props', this.type);
-//     //mocking taking the picture
-//     let ourInterval = setInterval(() => {
-//       if (this.type !== 'person'){
-//         console.log('why are we in here ', this.type, ' ', this.type !== 'person');
-//         this.uploadComplete = true;
-//         console.log('in our set interval', this.uploadComplete);
-//       }
-//     }, 5000);
-//   },
-//   beforeDestroy() {
-//     window.removeEventListener('resize', this.onResize);
-//   },
-//   computed: {
-//     computeSizeOfDialog() {
-//       let size = this.windowWidth > 650 ? '30%' : '90%';
-//       console.log('computing size of dialog ', this.windowWidth, ' and this is what we return ', size);
-//       return size;
-//     }
-//   },
-//   methods: {
-//     upload(item) {
-//       console.log('upload', item);
-//       this.$router.push({name:item.to , params: {type: 'person'}});
-//     },
-//     onDialogClose() {
-//       console.log('dialog closed');
-//     },
-//     uploadDialogClose() {
-//       console.log('upload dialog closed');
-//       // this.$router.push({name: 'upload-selfie' , params: {type: 'person'}});
-//       // this.$router.push({name: 'captured-image'});
-//     }
-//   }
-// }
-
+<script lang="ts">
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
-import { usePictureStore } from "~/stores/pictureStore";
-import { useRouteStore } from "~/stores/routeStore";
-import { useSettings } from "~/stores/userSettings";
-import {usePageInfoStore} from "~/stores/pageInfoStore";
+import { usePictureStore } from "../stores/pictureStore.js";
+import { useRouteStore } from "../stores/routeStore.js";
+import { useSettings } from "../stores/userSettings.js";
 export default {
-  props: ["title", "type", "instructions","subtitle"],
+  props: {
+    title: String,
+    type: String,
+    instructions: String,
+    subtitle: String,
+  },
   setup(props) {
     let dialogTableVisible = ref(true);
     let uploadComplete = ref(false);
@@ -136,8 +62,6 @@ export default {
     let ourInterval = null;
     const router = useRouter();
     const useSettingsStore = useSettings();
-    const pageInfoStore = usePageInfoStore();
-    pageInfoStore.setSubtitle(props.subtitle);
     const mask = ref("../assets/IDCard.png");
     const idList = [
       "All 4 corners must be visible",
@@ -260,8 +184,6 @@ export default {
     };
   },
 };
-
-// have to use options
 </script>
 
 <style scoped>
