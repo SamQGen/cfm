@@ -9,6 +9,7 @@ export const useSettings = defineStore("settings", {
     allowIDCard: true,
     allowDrivingLicense: true,
     user: null,
+    backgroundColor: "#e06b6b",
   }),
   getters: {
     getUser: (state) => state.user,

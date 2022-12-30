@@ -17,7 +17,7 @@
           </ul>
         </el-container>
         <div v-for="(item, i) in buttons" :key="i" class="">
-          <el-row class="row-padding" v-if="item.allow">
+          <el-row class="row-padding" v-if="item.allow" :class="item.class">
             <el-col col="6">
               <el-button plain @click="upload(item)">
                 {{ item.name }}</el-button
@@ -88,25 +88,25 @@ export default {
         icon: "camera",
         to: "camera-view",
         allow: true,
+        class:''
       },
       {
         name: "Upload Image",
         icon: "upload",
         to: "upload-image",
         allow: useSettingsStore.allowPictureUpload,
+        class:''
       },
       {
         name: "Continue on smartphone",
         icon: "phone",
         to: "continue-on-smartphone",
         allow: useSettingsStore.allowMobile,
+        class:'hidden-sm-and-down'
       },
     ]);
     const windowWidth = ref(window.innerWidth);
 
-    let onDialogClose = () => {
-      console.log("dialog closed");
-    };
     let uploadDialogClose = () => {
       console.log("upload dialog closed");
       // usePictureStore().takePicture()
@@ -177,7 +177,6 @@ export default {
       computeSizeOfDialog,
       mask,
       uploadComplete,
-      onDialogClose,
       uploadDialogClose,
       takePicture,
       calculatedList,
