@@ -8,18 +8,12 @@
   justify-content: center;
   font-weight: normal;
 }
-/*.header{*/
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*}*/
 .center{
   display: flex;
   justify-content: center;
 }
 
 .main-card {
-  /*display: flex;*/
-  /*justify-content: center;*/
   height: 800px;
   width: 800px;
 }

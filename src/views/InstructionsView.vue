@@ -1,5 +1,5 @@
 <template>
-  <el-card class="main-card" body-style="background-color">
+  <el-card class="main-card">
     <template #header>
       <el-row justify="center">
         <h1>Hi {{ user }}</h1>
@@ -34,7 +34,6 @@ import { useSettings } from "~/stores/userSettings";
 import {computed} from "vue";
 import { MD_SIZE, SM_SIZE, XS_SIZE } from "~/assets/columnSizes";
 const useSettingsStore = useSettings();
-
 
 let user = computed(() => {
   return useSettingsStore.getUser;
