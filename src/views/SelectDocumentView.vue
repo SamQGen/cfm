@@ -4,7 +4,6 @@
       <el-row justify="center">
         <h1>Select Document</h1>
       </el-row>
-
     </template>
     <!--  body-->
     <el-row
@@ -13,9 +12,9 @@
       class="document-row"
       v-show="type.show"
     >
-      <el-button class="box-card" plain @click="selectDocument(type.to)"
-        ><h1>{{ type.name }}</h1></el-button
-      >
+      <el-button class="button-list" plain @click="selectDocument(type.to)">
+        <h1>{{ type.name }}</h1>
+      </el-button>
     </el-row>
   </el-card>
 </template>
@@ -57,7 +56,7 @@ let verficationType = [
 </script>
 
 <style scoped>
-.box-card {
+.button-list {
   width: 300px;
   margin-bottom: 20px;
   padding: 10px;

@@ -201,10 +201,7 @@ export default {
         useRouteStore().setRoute(nextRoute);
         console.log("inside calculate next route");
         // router.push({ name: "upload-selfie", params: { type: "person" } });
-      } else if (!usePicture) {
-        let nextRoute = { name: "verification-view" };
-        useRouteStore().setRoute(nextRoute);
-      } else if (props.type === "person") {
+      } else if (!usePicture || props.type === "person") {
         let nextRoute = { name: "verification-view" };
         useRouteStore().setRoute(nextRoute);
       }

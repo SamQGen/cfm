@@ -1,7 +1,9 @@
 <template>
   <el-card class="main-card">
     <template #header>
-      <h1 class="center">Upload File</h1>
+      <el-row justify="center">
+        <h1>Upload File</h1>
+      </el-row>
     </template>
     <UploadFile></UploadFile>
   </el-card>
