@@ -128,7 +128,7 @@ import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
 import { usePictureStore } from "~/stores/pictureStore";
 import { useRouteStore } from "~/stores/routeStore";
-
+import { useSettings } from "~/stores/userSettings";
 export default {
   props: ["title", "type", "instructions", "subtitle"],
   setup(props) {
@@ -193,12 +193,16 @@ export default {
     };
 
     let caluclateNextRoute = () => {
+      let usePicture = useSettings().allowPictureUpload;
       console.log("calculating next route");
-      if (props.type !== "person") {
+      if (props.type !== "person" && usePicture) {
         let nextRoute = { name: "upload-selfie", params: { type: "person" } };
         useRouteStore().setRoute(nextRoute);
         console.log("inside calculate next route");
         // router.push({ name: "upload-selfie", params: { type: "person" } });
+      } else if (!usePicture) {
+        let nextRoute = { name: "verification-view" };
+        useRouteStore().setRoute(nextRoute);
       } else if (props.type === "person") {
         let nextRoute = { name: "verification-view" };
         useRouteStore().setRoute(nextRoute);
