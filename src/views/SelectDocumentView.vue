@@ -7,7 +7,7 @@
     </template>
     <!--  body-->
     <el-row
-      v-for="(type,i) in verficationType"
+      v-for="(type,i) in verificationType"
       :key="i"
       class="document-row"
       v-show="type.show"
@@ -19,9 +19,9 @@
   </el-card>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useRouter } from "vue-router";
-import { useSettings } from "~/stores/userSettings";
+import { useSettings } from "../stores/userSettings.js";
 const router = useRouter();
 const store = useSettings();
 
@@ -29,7 +29,9 @@ let selectDocument = (document) => {
   console.log("select document hit", document);
   router.push({ name: document });
 };
-let verficationType = [
+import { VerificationArray } from '../types/VerificationArray.ts';
+
+let verificationType: VerificationArray[] = [
   {
     name: "Passport",
     image: "https://qgen-identity.s3.eu-central-1.amazonaws.com/passport.png",

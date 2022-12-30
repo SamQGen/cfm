@@ -1,10 +1,11 @@
-<script setup>
+<script setup lang="ts">
 import { RouterView } from "vue-router";
-import { useSettings } from "~/stores/userSettings";
+import { useSettings } from "./stores/userSettings.js";
+
 
 const store = useSettings();
 const params = new Proxy(new URLSearchParams(window.location.search), {
-  get: (searchParams, prop) => searchParams.get(prop),
+  get: (searchParams) => searchParams.get('name'),
 });
 console.log("can we get route here? ", params.name);
 store.getSettings(params.name);

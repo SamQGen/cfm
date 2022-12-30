@@ -8,8 +8,9 @@
   </el-button>
 </template>
 
-<script>
-import {Camera} from '@element-plus/icons-vue'
+<script lang="js">
+
+import {Camera} from '@element-plus/icons-vue';
 import { defineComponent, onMounted } from 'vue';
 
 export default defineComponent({
@@ -48,54 +49,6 @@ export default defineComponent({
     };
   },
 });
-
-
-//import { ref, onMounted, onUnmounted,computed } from 'vue';
-//
-//export default {
-//  setup() {
-//    const windowWidth = ref(window.innerWidth);
-//    let iconSize = ref();
-//    onMounted(() => {
-//      window.addEventListener('resize', () => {
-//        windowWidth.value = window.innerWidth;
-//
-//        if (windowWidth.value > 650){
-//          iconSize=50
-//          console.log('big screen')
-//        }
-//        else
-//        {
-//          console.log('small screen')
-//          iconSize = 30
-//        }
-//        // console.log('window height', windowHeight.value);
-//      });
-//    });
-//
-//    onUnmounted(() => {
-//      window.removeEventListener('resize', this.onResize);
-//    });
-//    // const iconSize = computed(() => {
-//    //   console.log('inside our computing function')
-//    //   if (windowHeight < 600) {
-//    //     console.log('is mobile')
-//    //     return 30;
-//    //   } else {
-//    //     console.log('is desktop')
-//    //     return 50;
-//    //   }
-//    // })
-//
-//    return {
-//      windowWidth,
-//      iconSize
-//    }
-//  }
-//
-//
-//}
-
 
 </script>
 

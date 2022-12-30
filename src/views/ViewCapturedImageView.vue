@@ -19,10 +19,10 @@
   </el-card>
 </template>
 
-<script setup>
-import { usePictureStore } from "~/stores/pictureStore";
+<script setup lang="ts">
+import { usePictureStore } from "../stores/pictureStore.js";
 import { ref, watch } from "vue";
-import { useRouteStore } from "~/stores/routeStore";
+import { useRouteStore } from "../stores/routeStore.js";
 import { useRouter } from "vue-router";
 let image = ref(null);
 let blob = usePictureStore().picture;

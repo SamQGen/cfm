@@ -1,4 +1,5 @@
-import path from 'path'
+// @ts-ignore
+import path from "path";
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
@@ -14,6 +15,7 @@ import {
   transformerVariantGroup,
 } from 'unocss'
 
+// eslint-disable-next-line no-undef
 const pathSrc = path.resolve(__dirname, 'src')
 
 // https://vitejs.dev/config/

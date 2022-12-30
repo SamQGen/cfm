@@ -19,8 +19,8 @@
   </el-row>
 </template>
 
-<script>
-import { usePictureStore } from "~/stores/pictureStore";
+<script lang="ts">
+import { usePictureStore } from "../stores/pictureStore.js";
 
 export default {
   name: "CameraModule",
@@ -37,12 +37,6 @@ export default {
     },
   },
   methods: {
-    takePicture() {
-      this.camera.snapAsBlob().then((data) => {
-        this.isTaken = true;
-        console.log("data ", data);
-      });
-    },
   },
   computed: {
     isCameraLoaded() {
@@ -73,7 +67,6 @@ export default {
   data() {
     return {
       isTaken: false,
-      isLoaded: false,
     };
   },
   mounted() {

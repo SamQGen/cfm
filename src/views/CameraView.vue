@@ -21,7 +21,7 @@
   </el-card>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useRouteStore } from "~/stores/routeStore";
 import { computed } from "vue";
 import { usePictureStore } from "~/stores/pictureStore";

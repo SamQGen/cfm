@@ -43,7 +43,7 @@
     </template>
   </el-dialog>
 </template>
-<script setup>
+<script setup lang="ts">
 import { Loading } from "@element-plus/icons-vue";
 import {onMounted, onUnmounted, ref} from "vue";
 import {useRouter} from "vue-router";

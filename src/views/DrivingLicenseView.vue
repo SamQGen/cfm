@@ -6,7 +6,7 @@
   ></upload-item>
 </template>
 
-<script setup>
+<script setup lang="ts">
 let subtitle =
   "place your Driving License inside the circle so we can extract information";
 </script>

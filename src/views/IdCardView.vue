@@ -3,7 +3,7 @@
   </upload-item>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted } from "vue";
 let subtitle =
   "place your ID Card inside the circle so we can extract information about your ID";

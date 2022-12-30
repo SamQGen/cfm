@@ -29,10 +29,10 @@
   </el-card>
 </template>
 
-<script setup>
-import { useSettings } from "~/stores/userSettings";
+<script setup lang="ts">
+import { useSettings } from "../stores/userSettings.js";
 import {computed} from "vue";
-import { MD_SIZE, SM_SIZE, XS_SIZE } from "~/assets/columnSizes";
+import { MD_SIZE, SM_SIZE, XS_SIZE } from "../assets/columnSizes.js";
 const useSettingsStore = useSettings();
 
 let user = computed(() => {
