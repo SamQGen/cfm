@@ -1,12 +1,12 @@
 <template>
   <el-card class="main-card">
     <template #header>
-      <div class="header">
+      <el-row justify="center">
         <el-space direction="vertical">
           <h1>Captured Image</h1>
           <h4>Are you happy with the captured image</h4>
         </el-space>
-      </div>
+      </el-row>
     </template>
     <!--  body -->
     <el-row justify="center">

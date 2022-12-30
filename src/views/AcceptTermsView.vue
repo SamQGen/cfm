@@ -24,10 +24,9 @@
       ></el-checkbox>
     </el-row>
     <el-row class="" justify="center">
-      <el-button :disabled="!checked" type="primary" @click="submit"
-        >Submit</el-button
-      >
+      <el-button :disabled="!checked" type="primary" @click="submit">Submit</el-button>
     </el-row>
+
   </el-card>
 </template>
 
@@ -35,7 +34,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import {useRouter } from "vue-router";
 const router = useRouter();
 const checked = ref(true);
 let submit = () => {

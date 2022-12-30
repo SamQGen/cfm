@@ -1,13 +1,15 @@
 <template>
   <el-card class="main-card">
     <template #header>
-      <div class="header">
+      <el-row justify="center">
         <h1>Select Document</h1>
-      </div>
+      </el-row>
+
     </template>
     <!--  body-->
     <el-row
-      v-for="type in verficationType"
+      v-for="(type,i) in verficationType"
+      :key="i"
       class="document-row"
       v-show="type.show"
     >

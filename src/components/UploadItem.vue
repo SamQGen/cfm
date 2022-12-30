@@ -1,16 +1,13 @@
 <template>
   <el-card class="main-card">
     <template #header>
-      <div class="header">
-        <el-space direction="vertical">
-          <h1>{{ title }}</h1>
-          <h4>{{ subtitle }} the picture will be captured automatically</h4>
-        </el-space>
-      </div>
+      <el-space direction="vertical">
+        <h1>{{ title }}</h1>
+        <h4>{{ subtitle }} the picture will be captured automatically</h4>
+      </el-space>
     </template>
     <el-container class="center content-container">
       <el-space direction="vertical">
-        <!--        <camera-module :type="type"></camera-module>-->
         <el-container
           direction="vertical"
           class="content-container"
@@ -21,7 +18,7 @@
           </ul>
         </el-container>
         <div v-for="(item, i) in buttons" :key="i" class="">
-          <el-row class="row-padding">
+          <el-row class="row-padding" v-if="item.allow">
             <el-col col="6">
               <el-button plain @click="upload(item)">
                 {{ item.name }}</el-button
@@ -138,6 +135,7 @@ export default {
     const isTaken = ref(false);
     let ourInterval = null;
     const router = useRouter();
+    const useSettingsStore = useSettings();
     const mask = ref("../assets/IDCard.png");
     const idList = [
       "All 4 corners must be visible",
@@ -163,16 +161,19 @@ export default {
         name: "Use Camera",
         icon: "camera",
         to: "camera-view",
+        allow: true,
       },
       {
         name: "Upload Image",
         icon: "upload",
         to: "upload-image",
+        allow: useSettingsStore.allowPictureUpload,
       },
       {
         name: "Continue on smartphone",
         icon: "phone",
         to: "continue-on-smartphone",
+        allow: useSettingsStore.allowMobile,
       },
     ]);
     const windowWidth = ref(window.innerWidth);
