@@ -2,7 +2,7 @@
   <el-card class="main-card" body-style="background-color">
     <template #header>
       <el-row justify="center">
-        <h1>Hi {{ name }}</h1>
+        <h1>Hi {{ user }}</h1>
       </el-row>
     </template>
     <template #default>
@@ -21,7 +21,7 @@
         </el-row>
         <el-row justify="center">
           <el-button type="primary" text>
-            Not James? Login with some100one else
+            Not {{calculateUser}}? Login with someone else
           </el-button>
         </el-row>
       </el-main>
@@ -31,17 +31,17 @@
 
 <script setup>
 import { useSettings } from "~/stores/userSettings";
-import { ref, watch } from "vue";
+import {computed} from "vue";
 import { MD_SIZE, SM_SIZE, XS_SIZE } from "~/assets/columnSizes";
-let name = ref(null);
-console.log("this is the settings ", useSettings().name);
-watch(
-  () => useSettings().getUser,
-  (nv) => {
-    console.log("name changed ", nv);
-    name.value = nv;
-  }
-);
+const useSettingsStore = useSettings();
+
+
+let user = computed(() => {
+  return useSettingsStore.getUser;
+});
+let calculateUser= computed(() => {
+  return user.value? user.value: "who you say you are?";
+});
 </script>
 
 <style scoped></style>

@@ -43,13 +43,30 @@
 </template>
 <script setup>
 import { Loading } from "@element-plus/icons-vue";
-import { ref } from "vue";
+import {onMounted, onUnmounted, ref} from "vue";
+import {useRouter} from "vue-router";
 let showNewNumberDialog = ref(false);
 let number = ref("");
+let ourInterval = null;
+const router = useRouter();
 let openDialog = () => {
   showNewNumberDialog.value = true;
 };
+
+onMounted(() => {
+  console.log("mounted smartphone page");
+  ourInterval = setInterval(() => {
+    router.push({ name: "instructions-view" });
+    console.log("interval hit");
+  }, 2000);
+});
+onUnmounted(() => {
+  clearInterval(ourInterval);
+  console.log("unmounted");
+});
+
 let closeDialog = () => {
+
   showNewNumberDialog.value = false;
 };
 </script>
