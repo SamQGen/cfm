@@ -1,22 +1,22 @@
 <template>
-  <div class="" id="container center">
+  <el-row class="" id="container" justify="center">
     <video
-      class="center half"
+      class="half"
       ref="videoSection"
       v-show="!isTaken"
       autoplay
       playsinline
     ></video>
-    <canvas class="center half" ref="canvasSection" v-show="isTaken"></canvas>
-    <div class="center" id="overlay">
+    <canvas class="half" ref="canvasSection" v-show="isTaken"></canvas>
+    <el-row justify="center" id="overlay">
       <img
         v-if="applyMask && isCameraLoaded"
-        class="center half transparent-image"
+        class="half transparent-image"
         :src="applyMask"
         alt=""
       />
-    </div>
-  </div>
+    </el-row>
+  </el-row>
 </template>
 
 <script>

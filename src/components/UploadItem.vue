@@ -6,7 +6,7 @@
         <h4>{{ subtitle }} the picture will be captured automatically</h4>
       </el-space>
     </template>
-    <el-container class="center content-container">
+    <el-container class="content-container">
       <el-space direction="vertical">
         <el-container
           direction="vertical"

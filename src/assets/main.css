@@ -8,10 +8,6 @@
   justify-content: center;
   font-weight: normal;
 }
-.center{
-  display: flex;
-  justify-content: center;
-}
 
 .main-card {
   height: 800px;
